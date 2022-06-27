@@ -2,13 +2,31 @@ import React, { useState } from "react";
 
 import Post from "./Post";
 import Header from "./Header";
-
+import ThemeProvider from "./ThemeContext";
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: Math.random(), title: "Title01", subtitle: "subtitle01", likes: 20 },
-    { id: Math.random(), title: "Title02", subtitle: "subtitle02", likes: 10 },
-    { id: Math.random(), title: "Title03", subtitle: "subtitle03", likes: 15 },
+    {
+      id: Math.random(),
+      title: "Title01",
+      subtitle: "subtitle01",
+      likes: 20,
+      read: false,
+    },
+    {
+      id: Math.random(),
+      title: "Title02",
+      subtitle: "subtitle02",
+      likes: 10,
+      read: false,
+    },
+    {
+      id: Math.random(),
+      title: "Title03",
+      subtitle: "subtitle03",
+      likes: 15,
+      read: true,
+    },
   ]);
 
   function handleRefresh() {
@@ -24,27 +42,20 @@ function App() {
   }
 
   function handleRemove(postId) {
-    console.log(postId);
+    setPosts((prevState) => prevState.filter((post) => post.id !== postId));
   }
 
   return (
-    <>
+    <ThemeProvider>
       <Header>
         <h2>Posts da semana</h2>
         <button onClick={handleRefresh}>Atualizar</button>
       </Header>
       <hr />
       {posts.map((post) => {
-        return (
-          <Post
-            onRemove={handleRemove}
-            key={post.id}
-            post={{ id:post.id, title: post.title, subtitle: post.subtitle }}
-            likes={post.likes}
-          />
-        );
+        return <Post onRemove={handleRemove} key={post.id} post={post} />;
       })}
-    </>
+    </ThemeProvider>
   );
 }
 
