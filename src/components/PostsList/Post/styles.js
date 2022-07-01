@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.article`
-  background: #333;
+  ${({theme})=> css`
+    background: ${theme.postBackgroundColor};
+  `}
   display: flex;
   flex-direction: column;
   padding: 16px;

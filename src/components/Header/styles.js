@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Container = styled.header`
-  background: #111;
+  ${({theme}) => css`
+    background: ${theme.componentBackgroundColor};
+  `}
   height: 100px;
   display: flex;
   align-items: center;
