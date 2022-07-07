@@ -4,16 +4,16 @@ import GlobalStyle from "./styles/global";
 import Layout from "./components/Layout";
 import CustomThemeProvider from "./contexts/ThemeContext";
 
-class App extends React.Component{
-  render(){
+class App extends React.Component {
+  render() {
     return (
-          <>
-            <CustomThemeProvider>
-              <GlobalStyle />
-              <Layout />
-            </CustomThemeProvider>
-          </>
-        );
+      <>
+        <CustomThemeProvider>
+          <GlobalStyle />
+          <Layout />
+        </CustomThemeProvider>
+      </>
+    );
   }
 }
 
